@@ -41,8 +41,7 @@
 		.master-container{
 			margin:0;
 			padding:0px 0 0 0 ;
-/*			width:100%;
-*/		}
+	}
 		.container{
 			width:320px;
 			margin:auto;
@@ -82,7 +81,6 @@
 			height:190px;
 			background-color: #c6c5bc;
 			border-radius:10px;
-			/*box-shadow:  0 0 1em 0 rgba(0,0,0,0.1);*/
 		}
 		.base-container{
 		}
@@ -104,16 +102,14 @@
 			width:200px;
 			top:70px;
 			left:60px;
-			border-radius: 10px;
+			border-radius: 5px;
 		}
 		.spool{
 		    width: 50px;
 		    height: 50px;
 		    position: absolute;
-		    text-align: center;
 		    border-radius:32px;
 		}
-
 		.spool.left{
 			position:absolute;
 			left:5px;
@@ -145,8 +141,7 @@
 			border:none;
 			background:none;
 			padding-top: -30px;
-		}		
-
+		}
 		.side-a{
 			background:#444;
 			font-family:sans-serif;
@@ -161,41 +156,59 @@
 			left:10px;
 			position:absolute;
 		}
-
 		.eyeball{
 			background:#fff;
-			box-shadow:  0 -2px 1px 0px #a9a89e;
+			box-shadow:inset  0 2px 1px 0px #a9a89e;
 			width:40px;
 			height:40px;
 			border-radius:40px;
 			position:absolute;
 			top:5px;
 			left:5px;
-
 		}
-
-		.pupil{
+		@-webkit-keyframes checkout-user {
+			from { }
+			10% { top:67px;}
+			90% { top:67px;}
+			to { }
+		}
+		.fake-eyes{
+			position:absolute;
+			z-index:5;
+			top:77px;
+			left:48px;
+			width:200px;
+			height:20px;
+			/*background:red;*/
+		}
+		.pupil {
 			background:#000;
 			width:16px;
 			height:16px;
 			border-radius:8px;
 			position:absolute;
-			left:12px;
-			top:12px;
-			-webkit-animation:wandering-eyes 8s 10;
-			-webkit-animation-delay: 3s;
-			-webkit-animation-direction:alternate;
-			animation:wandering-eyes 8s 10;
-			animation-delay: 3s;
-			animation-direction:alternate;
+
+		}
+		.pupil.left {
+			position:absolute;
+			left:22px;
+		}		
+		.pupil.right {
+			position:absolute;
+			right:22px;
+		}
+		.pupil-refraction{
+			background:#fff;
+			width:6px;
+			height:6px;
+			border-radius:4px;
+			position:absolute;
+			left:2px;
+			top:2px;
 		}
 
-		@-webkit-keyframes wandering-eyes{
-			0%{		margin-top:0}
-			10%{	margin-top:0;}
-			20%{	margin-top:-0.4em;}
-			50%{	margin-top:-0.4em;}
-			60%{	margin-top:0em;}
+		input:focus+.fake-eyes{
+			-webkit-animation:checkout-user 2s ease-out;
 		}
 		.pupil-refraction{
 			background:#fff;
@@ -211,10 +224,11 @@
 			-webkit-animation:eyelids-blink 6s infinite;
 			animation:eyelids-blink 6s infinite;
 			background-color: #c6c5bc;
-			width:46px;
-			height:1px;
+			width:42px;
+			height:0;
 			position:absolute;
-			top:-5px;
+			top:-4px;
+			z-index:10;
 		}
 		/*pixel values  (dose not cope with resize)*/
 		@-keyframes eyelids-blink
@@ -223,7 +237,7 @@
 				}
 				/*blink cycle 1*/
 				3.20% {
-					height:1px;
+					height:0;
 				} 
 				4.25% {
 					height:45px;
@@ -232,11 +246,11 @@
 					height:45px;
 				}
 				6.35% {
-					height:1px;
+					height:0;
 				} 
 				/*blink cycle 2*/
 				7.40% {
-					height:1px;
+					height:0;
 				} 
 				8.45% {
 					height:47px;
@@ -245,7 +259,7 @@
 					height:47px;
 				}
 				11.25% {
-					height:1px;
+					height:0;
 				}     
 				100% {
 				}
@@ -257,30 +271,30 @@
 				}
 				/*blink cycle 1*/
 				3.20% {
-					height:1px;
+					height:0;
 				} 
 				4.25% {
 					height:2.3em;
 					
 				}
 				5.30% {
-					height:3.3em;
+					height:3em;
 				}
 				6.35% {
-					height:1px;
+					height:0;
 				} 
 				/*blink cycle 2*/
 				7.40% {
-					height:1px;
+					height:0;
 				} 
 				8.45% {
 					height:2.2em;
 				}
 				10.60% {
-					height:3.2em;
+					height:3em;
 				}
 				11.25% {
-					height:1px;
+					height:0;
 				}     
 				100% {
 				}
@@ -300,7 +314,7 @@
 			padding:80px 0 0 0;
 			background:#f9f9f9;
 			width:360px;
-			box-shadow:  0 0 10px 0 rgba(10, 10, 10, 0.05);
+			/*box-shadow:  0 0 10px 0 rgba(10, 10, 10, 0.05);*/
 			font-family:sans-serif;
 			font-size:12pt;
 			text-shadow:-1px 0 1px #fff;
@@ -326,7 +340,7 @@
 			padding-top:10px;
 			position: relative;
 			border-bottom: 1px dashed #fff;
-			box-shadow:-5px 10px 10px -10px #eee;
+			/*box-shadow:-5px 10px 10px -10px #eee;*/
 		}
 		
 		.lyric-summary{
@@ -400,27 +414,36 @@
                             <div class="label">
                             	<div class="side-a">&#913;</div>
                             	<input name="q" value="{{ q }}"   onfocus="if(this.value == '{{ q }}') { this.value = ''; }">
+                            	<div class="fake-eyes">
+                            		<!--repeat eye stuff in here-->
+												<div class="pupil left">
+													<div class="pupil-refraction"></div>
+												</div>
+												<div class="pupil right">
+													<div class="pupil-refraction"></div>
+												</div>
+									<!--end repeat of eye stuff-->
+                            	</div>
                             </div>
-                        </form>
-						<div class="spool-container">
-							<div class="spool left">
-								<div class="eyeball">
-									<div class="pupil">
-										<div class="pupil-refraction"></div>
+							<div class="spool-container">
+								<div class="spool left">
+									<div class="eyeball">
+										<!-- <div class="pupil">
+											<div class="pupil-refraction"></div>
+										</div> -->
+										<div class="eyelids"></div>
 									</div>
-									<div class="eyelids"></div>
+								</div>
+								<div class="spool right">
+									<div class="eyeball">
+										<!-- <div class="pupil">
+											<div class="pupil-refraction"></div>
+										</div> -->
+										<div class="eyelids"></div>
+									</div>
 								</div>
 							</div>
-							<div class="spool right">
-								<div class="eyeball">
-									<div class="pupil">
-										<div class="pupil-refraction"></div>
-									</div>
-									<div class="eyelids"></div>
-								</div>
-							</div>
-						</div>
-						
+                      	</form>
 						<div class="base-container">
 							<div class="base"></div>
 						</div>
