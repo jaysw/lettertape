@@ -441,7 +441,7 @@
                     		..."</p>
                     		<div class="actions">
                     			<ul>
-                    				<li><a href="https://www.youtube.com/results?search_query={{ hit.title }} {{ hit.artist }}">best guess on youtube</a></li>
+                    				<li><a href="https://www.youtube.com/results?search_query={{ hit.title | urlencode }}{{ ' ' | urlencode }}{{ hit.artist | urlencode}}">best guess on youtube</a></li>
                     				<li><del>add  to your playlist</del></li>
                     				<li><del>buy on itunes </del></li>
                     			</ul>
