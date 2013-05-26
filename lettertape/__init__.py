@@ -19,7 +19,7 @@ def prepare_hits(hits):
 @app.route("/", methods='GET POST'.split())
 def index():
     """The home page"""
-    conn = es.ES('192.168.0.8:9200')
+    conn = es.ES(app.ELASTICSEARCH_HOST)
     hits = []
     total = 0
     searching = False
