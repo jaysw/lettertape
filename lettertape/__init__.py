@@ -2,7 +2,7 @@ import pyes as es
 from flask import Flask, session, g, render_template, request
 
 app = Flask(__name__)
-app.config.from_object('websiteconfig')
+app.config.from_pyfile('../websiteconfig.py')
 
 MAX_RESULTS = 500
 
@@ -19,7 +19,7 @@ def prepare_hits(hits):
 @app.route("/", methods='GET POST'.split())
 def index():
     """The home page"""
-    conn = es.ES(app.ELASTICSEARCH_HOST)
+    conn = es.ES(app.config['ELASTICSEARCH_HOST'])
     hits = []
     total = 0
     searching = False

@@ -413,7 +413,7 @@
                         <form method="post">
                             <div class="label">
                             	<div class="side-a">&#913;</div>
-                            	<input name="q" value="{{ q }}"   onfocus="if(this.value == '{{ q }}') { this.value = ''; }">
+                            	<input name="q" value="{{ q }}"   onfocus="if(this.value == '{{ q | replace("'","\\'") | safe }}') { this.value = ''; }">
                             	<div class="fake-eyes">
                             		<!--repeat eye stuff in here-->
 												<div class="pupil left">
@@ -464,7 +464,7 @@
                     		..."</p>
                     		<div class="actions">
                     			<ul>
-                    				<li><a href="https://www.youtube.com/results?search_query={{ hit.title }} {{ hit.artist }}">best guess on youtube</a></li>
+                    				<li><a href="https://www.youtube.com/results?search_query={{ hit.title | urlencode }}{{ ' ' | urlencode }}{{ hit.artist | urlencode}}">best guess on youtube</a></li>
                     				<li><del>add  to your playlist</del></li>
                     				<li><del>buy on itunes </del></li>
                     			</ul>
@@ -473,7 +473,7 @@
 				   		</li>
                    	{% endfor %}
 					</ol>
-					<div class="footer">by jay & corin</div>		
+					<div class="footer">by jay &amp; corin</div>		
 				</div>
 			</div>
 
