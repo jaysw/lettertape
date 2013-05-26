@@ -1,0 +1,460 @@
+
+<html>
+	<head>
+		<title>lettertape</title>
+		<link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+		<meta name="apple-mobile-web-app-capable" content="yes" /> 
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<meta name="viewport" content="width=440">
+		<style>
+
+		@import url(http://fonts.googleapis.com/css?family=Amatic+SC:700);
+		
+		body{
+			margin:0;
+			padding:0;
+			background-color:#fff;
+		}
+
+		.blurb{
+			font-size:26pt;
+			color:navy;
+			color:black;
+			text-align:center;	
+			opacity:1;
+			width:340px;
+			font-family: 'Amatic SC', cursive;
+			font-weight: normal;
+			margin:20px auto;
+		}
+
+		.ampersand-line-height{
+			background-color: yellow;
+		}
+
+		.reference-image{
+			top:130px;
+			margin-left:100px;
+			position: absolute;
+		}
+
+		.master-container{
+			margin:0;
+			padding:0px 0 0 0 ;
+/*			width:100%;
+*/		}
+		.container{
+			width:320px;
+			margin:auto;
+			position:relative;
+			font-family: 'Amatic SC', cursive;
+
+		}
+		.casette{
+		}
+
+		@-webkit-keyframes tape-drop{
+			0% {margin-top:-55em;}
+			65%{margin-top:3em;}
+			70%{margin-top:0em;}
+			75%{margin-top:0em;}
+			80%{margin-top:2em;-webkit-rotation(2deg)}
+			85%{margin-top:0em;}
+			90%{margin-top:2em;}
+			93%{margin-top:1em;}
+			96%{margin-top:2em;}
+		}		
+
+		@keyframes tape-drop{
+			0% {margin-top:-55em;}
+			65%{margin-top:3em;}
+			70%{margin-top:0em;}
+			75%{margin-top:0em;}
+			80%{margin-top:2em;}
+			85%{margin-top:0em;}
+			90%{margin-top:2em;}
+			93%{margin-top:1em;}
+			96%{margin-top:2em;}
+		}
+
+		.tape{
+			width:320px;
+			height:190px;
+			background-color: #c6c5bc;
+			border-radius:10px;
+			/*box-shadow:  0 0 1em 0 rgba(0,0,0,0.1);*/
+		}
+		.base-container{
+		}
+		.base{
+			border-bottom: 40px solid #a9a89e;
+			border-left: 20px solid transparent;
+			border-right: 20px solid transparent;
+			height: 0;
+			width: 160px;
+			position:absolute;
+			bottom: 0px;
+			left:60px;
+		}
+		.spool-container{
+			position:absolute;
+			background-color: #c6c5bc;
+			height:50px;
+			width:180px;
+			width:200px;
+			top:70px;
+			left:60px;
+			border-radius: 10px;
+		}
+		.spool{
+		    width: 50px;
+		    height: 50px;
+		    position: absolute;
+		    text-align: center;
+		    border-radius:32px;
+		}
+
+		.spool.left{
+			position:absolute;
+			left:5px;
+		}
+		.spool.right{
+			position:absolute;
+			right:5px;
+		}
+		.label{
+			background:ivory;
+			width:294px;
+			height:130px;	
+			position:absolute;
+			left:12px;
+			top:10px;
+			border-radius: 5px;
+			box-shadow:  0 -2px 1px 0px #a9a89e;
+		}
+		.label input{
+			position: absolute;
+			width:218px;
+			height:60px;
+			color:#c00;
+			/*point size calculated from some website: http://www.unitconversion.org/typography/postscript-points-to-pixels-x-conversion.html*/
+			font-size:38pt;
+			font-family: 'Amatic SC', cursive;
+			text-align:center;
+			left:40px;
+			border:none;
+			background:none;
+			padding-top: -30px;
+		}		
+
+		.side-a{
+			background:#444;
+			font-family:sans-serif;
+			font-weight:normal;
+			font-size:18px;
+			color:#fff;
+			height:20px;
+			width:20px;
+			padding:2px;
+			text-align:center;
+			top:10px;
+			left:10px;
+			position:absolute;
+		}
+
+		.eyeball{
+			background:#fff;
+			box-shadow:  0 -2px 1px 0px #a9a89e;
+			width:40px;
+			height:40px;
+			border-radius:40px;
+			position:absolute;
+			top:5px;
+			left:5px;
+
+		}
+
+		.pupil{
+			background:#000;
+			width:16px;
+			height:16px;
+			border-radius:8px;
+			position:absolute;
+			left:12px;
+			top:12px;
+			-webkit-animation:wandering-eyes 8s 10;
+			-webkit-animation-delay: 3s;
+			-webkit-animation-direction:alternate;
+			animation:wandering-eyes 8s 10;
+			animation-delay: 3s;
+			animation-direction:alternate;
+		}
+
+		@-webkit-keyframes wandering-eyes{
+			0%{		margin-top:0}
+			10%{	margin-top:0;}
+			20%{	margin-top:-0.4em;}
+			50%{	margin-top:-0.4em;}
+			60%{	margin-top:0em;}
+		}
+		.pupil-refraction{
+			background:#fff;
+			width:6px;
+			height:6px;
+			border-radius:4px;
+			position:absolute;
+			left:2px;
+			top:2px;
+		}
+
+		.eyelids{
+			-webkit-animation:eyelids-blink 6s infinite;
+			animation:eyelids-blink 6s infinite;
+			background-color: #c6c5bc;
+			width:46px;
+			height:1px;
+			position:absolute;
+			top:-5px;
+		}
+		/*pixel values  (dose not cope with resize)*/
+		@-keyframes eyelids-blink
+			{
+				0% {
+				}
+				/*blink cycle 1*/
+				3.20% {
+					height:1px;
+				} 
+				4.25% {
+					height:45px;
+				}
+				5.30% {
+					height:45px;
+				}
+				6.35% {
+					height:1px;
+				} 
+				/*blink cycle 2*/
+				7.40% {
+					height:1px;
+				} 
+				8.45% {
+					height:47px;
+				}
+				10.60% {
+					height:47px;
+				}
+				11.25% {
+					height:1px;
+				}     
+				100% {
+				}
+			}
+		/*em values (copes with resize)*/
+		@-webkit-keyframes eyelids-blink
+			{
+				0% {
+				}
+				/*blink cycle 1*/
+				3.20% {
+					height:1px;
+				} 
+				4.25% {
+					height:2.3em;
+					
+				}
+				5.30% {
+					height:3.3em;
+				}
+				6.35% {
+					height:1px;
+				} 
+				/*blink cycle 2*/
+				7.40% {
+					height:1px;
+				} 
+				8.45% {
+					height:2.2em;
+				}
+				10.60% {
+					height:3.2em;
+				}
+				11.25% {
+					height:1px;
+				}     
+				100% {
+				}
+			}
+
+		.perforated{
+		}
+
+		.tracklist-container{
+			width:360px;
+			margin:-80px auto;
+			padding: 0;
+
+		}
+		
+		.tracklist{
+			padding:80px 0 0 0;
+			background:#f9f9f9;
+			width:360px;
+			box-shadow:  0 0 10px 0 rgba(10, 10, 10, 0.05);
+			font-family:sans-serif;
+			font-size:12pt;
+			text-shadow:-1px 0 1px #fff;
+		}
+
+		.tracklist a{
+			color:#999;
+			font-size:small;
+			text-shadow:-1px 1px 1px #fff;
+			padding:25px 0 25px 0;
+		}
+
+		.tracklist ol{
+			list-style-position: inside;
+			padding:10px;
+		}
+		.tracklist ol li{
+			color:navy;
+			text-shadow:-1px 1px 1px #fff;
+			padding-left: 10px;
+			margin-bottom:10px;
+			padding-bottom:10px;
+			padding-top:10px;
+			position: relative;
+			border-bottom: 1px dashed #fff;
+			box-shadow:-5px 10px 10px -10px #eee;
+		}
+		
+		.lyric-summary{
+			font-size: 10pt;
+			color:#444;
+			background: ivory;
+			padding:10px;
+			text-transform:none;
+		}
+		
+		.lyric-summary-highlight{
+			background:rgba(255,255,0,0.5);
+			padding:2px;		
+		}
+		.lyric-summary.right{
+			-webkit-transform:rotate(1deg);	
+		}
+		.lyric-summary.left{
+			-webkit-transform:rotate(-1deg);
+		}
+		.actions{
+			font-size:9pt;
+		}
+
+		.actions a{
+			color:deeppink;
+			text-shadow:-1px 1px 1px #fff;
+
+		}
+
+		.actions ul, .actions ul li{
+			list-style-type:none;
+			box-shadow:none;
+			border:none;
+			margin:0;
+			padding:0;
+			color:#999;
+			text-shadow:none;
+
+		}
+		.footer{
+			color:black;
+			padding:10px 20px;
+			font-size:12pt;
+			text-shadow:-1px 0 1px #fff;
+		}
+		@-webkit-keyframes nonessential
+		{
+			0%{			opacity:1;}
+			50%{		opacity:1;}
+			100%{		opacity:0;}
+		}
+		@keyframes nonessential
+		{
+			0%{			opacity:1;}
+			50%{		opacity:1;}
+			100%{		opacity:0;}
+
+		}
+
+		</style>
+	</head>
+	<body>
+		<div class="blurb">search for a friend's name and find a song they think is about them</div>
+		<!-- <img class="reference-image" src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Tdkc60cassette.jpg"> -->
+		<div class="master-container">
+			<div class="container">
+				<div class="casette">
+					<div class="tape">
+                        <form method="post">
+                            <div class="label">
+                            	<div class="side-a">&#913;</div>
+                            	<input name="q" value="{{ q }}"   onfocus="if(this.value == '{{ q }}') { this.value = ''; }">
+                            </div>
+                        </form>
+						<div class="spool-container">
+							<div class="spool left">
+								<div class="eyeball">
+									<div class="pupil">
+										<div class="pupil-refraction"></div>
+									</div>
+									<div class="eyelids"></div>
+								</div>
+							</div>
+							<div class="spool right">
+								<div class="eyeball">
+									<div class="pupil">
+										<div class="pupil-refraction"></div>
+									</div>
+									<div class="eyelids"></div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="base-container">
+							<div class="base"></div>
+						</div>
+					</div>
+				</div>			
+
+			</div>
+			<div class="tracklist-container">
+				
+				<div class="tracklist">
+					<div class="perforated"></div>
+					<ol>
+                    	{% for hit in hits %}
+                    	<li>
+                    		<p>{{ hit.title }} ({{ hit.artist }})</p>
+                    		<p class="lyric-summary {{ loop.cycle('left', 'right') }}">"...
+                        	{{ hit.highlights[0]|safe }}
+                    		..."</p>
+                    		<div class="actions">
+                    			<ul>
+                    				<li><a href="https://www.youtube.com/results?search_query={{ hit.title }} {{ hit.artist }}">best guess on youtube</a></li>
+                    				<li><del>add  to your playlist</del></li>
+                    				<li><del>buy on itunes </del></li>
+                    			</ul>
+                    		</div>
+
+				   		</li>
+                   	{% endfor %}
+					</ol>
+					<div class="footer">by jay & corin</div>		
+				</div>
+			</div>
+
+			
+		</div>
+	</body>
+</html>
