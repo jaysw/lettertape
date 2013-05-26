@@ -399,7 +399,7 @@
                         <form method="post">
                             <div class="label">
                             	<div class="side-a">&#913;</div>
-                            	<input name="q" value="{{ q }}"   onfocus="if(this.value == '{{ quotedq }}') { this.value = ''; }">
+                            	<input name="q" value="{{ q }}"   onfocus="if(this.value == '{{ q | replace("'","\\'") | safe }}') { this.value = ''; }">
                             </div>
                         </form>
 						<div class="spool-container">

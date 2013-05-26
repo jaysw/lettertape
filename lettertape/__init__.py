@@ -35,4 +35,4 @@ def index():
         total = hits.total
         hits = prepare_hits(hits)
     return render_template('index.html', hits=hits,
-                           searching=searching, q=q, quotedq=q.replace("'","\\'"), total=total)
+                           searching=searching, q=q, total=total)
