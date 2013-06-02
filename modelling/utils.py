@@ -1,4 +1,7 @@
 def cleanWord(word):
+    """
+    Get rid of leading or trailing punctuation
+    """
     Punctuation = frozenset('.,:;"\'!')
     if word[0] in Punctuation:
         word = word[1:]
@@ -10,6 +13,9 @@ def cleanWord(word):
 
 
 def cleanLyrics(lyrics):
+    """
+    normalise words
+    """
     words = lyrics.lower().split()
 
     words = [cleanWord(word) for word in words]
@@ -19,13 +25,14 @@ def cleanLyrics(lyrics):
 
 
 def englishOnly(corpus, dictionary):
+    """
+    Hackity quick way to distinguish english songs. Does a reasonable job
+    """
     NecessaryTerms = ['the']
     IncompatibleTerms = 'ich la da dem'.split()
-    StopWords = 'the a have you my i been for that from in and no me they it as such but to of'.split()
 
     necessaryMapped = frozenset(dictionary.token2id[term] for term in NecessaryTerms)
     incompatibleMapped = frozenset(dictionary.token2id[term] for term in IncompatibleTerms)
-    stopMapped = frozenset(dictionary.token2id[term] for term in StopWords)
 
     newCorpus = []
     for lyric in corpus:
