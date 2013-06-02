@@ -24,25 +24,21 @@ def cleanLyrics(lyrics):
     return words
 
 
-def englishOnly(corpus, dictionary):
-    """
-    Hackity quick way to distinguish english songs. Does a reasonable job
-    """
+def isItEnglish(lyric, dictionary):
     NecessaryTerms = ['the']
     IncompatibleTerms = 'ich la da dem'.split()
 
     necessaryMapped = frozenset(dictionary.token2id[term] for term in NecessaryTerms)
     incompatibleMapped = frozenset(dictionary.token2id[term] for term in IncompatibleTerms)
 
-    newCorpus = []
-    for lyric in corpus:
-        if not any(word[0] in necessaryMapped for word in lyric):
-            continue
-        if any(word[0] in incompatibleMapped for word in lyric):
-            continue
+    if not any(word[0] in necessaryMapped for word in lyric):
+        return False
 
-        newCorpus.append(lyric)
+    if any(word[0] in incompatibleMapped for word in lyric):
+        return False
 
-    return newCorpus
+    return True
 
 
+def englishOnly(corpus, dictionary):
+    return [lyric for lyric in corpus if isItEnglish(lyric, dictionary)]

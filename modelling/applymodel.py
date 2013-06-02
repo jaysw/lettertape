@@ -9,7 +9,7 @@ import logging
 
 from gensim import corpora, models
 
-from utils import cleanLyrics, englishOnly
+from utils import cleanLyrics, englishOnly, isItEnglish
 from lyricsources import getLyricsFromJson, getLyricsFromElasticSearch
 
 def main(args):
@@ -51,24 +51,16 @@ def main(args):
     else:
         lyricsGenerator = getLyricsFromJson(os.path.expanduser(parameters.lyrics))
 
-    allLyrics = []
-    rawLyrics = []
     for index, songLyrics in enumerate(lyricsGenerator):
-        allLyrics.append(dictionary.doc2bow(cleanLyrics(songLyrics), allow_update=False))
-        rawLyrics.append(songLyrics)
-        if index > 10:
+        frequencied = dictionary.doc2bow(cleanLyrics(songLyrics), allow_update=False)
+        if not parameters.filterEnglishOnly or isItEnglish(frequencied, dictionary):
+            distribution = model[frequencied]
+            print distribution
+            print songLyrics            
+
+
+        if index > 30:
             break
-
-    if parameters.filterEnglishOnly:
-        logging.info("Filtering for english only")
-        allLyrics = englishOnly(allLyrics, dictionary)
-
-
-    logging.info("Calculating distributions")
-    for index, lyric in enumerate(allLyrics[:10]):
-        distribution = model[lyric]
-        print distribution
-        print rawLyrics[index]
 
     lyricRatings = {}
     
