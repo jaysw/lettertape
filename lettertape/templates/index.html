@@ -462,6 +462,10 @@
                     		<p class="lyric-summary {{ loop.cycle('left', 'right') }}">"...
                         	{{ hit.highlights[0]|safe }}
                     		..."</p>
+                    		<p>{% for topic, probability in hit.model %}
+                    				{{ topic }}: {{ probability }}<br/>
+                    			{% endfor %}
+                    		</p>
                     		<div class="actions">
                     			<ul>
                     				<li><a href="https://www.youtube.com/results?search_query={{ hit.title | urlencode }}{{ ' ' | urlencode }}{{ hit.artist | urlencode}}">best guess on youtube</a></li>

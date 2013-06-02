@@ -10,10 +10,12 @@ def prepare_hits(hits):
     for hit in hits:
         if hit._meta.highlight and hit._meta.highlight.get('lyrics'):
             highlights = hit._meta.highlight['lyrics']
+        print hit
         yield dict(title=hit.title,
                    artist=hit.artist,
                    highlights=highlights,
-                   wikia_url=hit.url)
+                   wikia_url=hit.url,
+                   model=sorted(hit.model.items(), key=lambda x:x[1], reverse=True))
 
 
 @app.route("/", methods='GET POST'.split())
@@ -31,7 +33,7 @@ def index():
         query.add('lyrics', q.lower().split())
         s = es.Search(query, highlight=h, size=MAX_RESULTS)
         s.add_highlight('lyrics')
-        hits = conn.search(s)
+        hits = conn.search(s, indices='languages')
         total = hits.total
         hits = prepare_hits(hits)
     return render_template('index.html', hits=hits,
