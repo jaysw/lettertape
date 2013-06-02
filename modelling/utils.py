@@ -25,6 +25,10 @@ def cleanLyrics(lyrics):
 
 
 def isItEnglish(lyric, dictionary):
+    """
+    Hackity quick way to distinguish english songs. Does a reasonable job
+    """
+
     NecessaryTerms = ['the']
     IncompatibleTerms = 'ich la da dem'.split()
 
